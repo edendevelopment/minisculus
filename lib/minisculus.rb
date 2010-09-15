@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
 
-get '/' do
-  "not empty"
+get '/message' do
+  settings.cipher.generate
 end

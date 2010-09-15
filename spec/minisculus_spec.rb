@@ -11,10 +11,16 @@ describe 'minisculus' do
     Sinatra::Application
   end
 
+  let(:cipher) { mock(:cipher, :generate => "THIS IS A MESSAGE") }
+
+  before(:each) do
+    set :cipher, cipher
+  end
+
   it 'sends out ciphered text' do
-    get '/'
+    get '/message'
     last_response.should be_ok
-    last_response.body.should_not be_empty
+    last_response.body.should == cipher.generate
   end
 
 end
