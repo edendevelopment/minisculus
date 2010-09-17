@@ -3,6 +3,10 @@ require 'rack/test'
 
 require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'minisculus')
 
-require 'capybara/cucumber'
-Capybara.app = Sinatra::Application
+World do
+  def app
+    Sinatra::Application
+  end
+  include Rack::Test::Methods
+end
 

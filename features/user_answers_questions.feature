@@ -39,6 +39,7 @@ Feature: a quiz
     When I PUT /foo with request headers:
       """
       Accept: application/json
+      Content-type: application/json
       """
     Then the status should be 406
 
@@ -93,3 +94,17 @@ Feature: a quiz
       Location: /you-have-finished
       """
     And the status should be 303
+
+  Scenario: finished
+    When I GET /you-have-finished with request headers:
+      """
+      Accept: application/json
+      """
+    Then the body should contain JSON:
+      """
+      {
+        "finished": true
+      }
+      """
+    And the status should be 200
+
