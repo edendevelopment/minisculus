@@ -13,25 +13,25 @@ get '/you-have-finished' do
 end
 
 get '/:key' do
-  return_json :question => question(params[:key])
+  return_json :question => question
 end
 
 put '/:key' do
-  if correct_answer?(params[:key]) 
-    redirect next_question_path(params[:key]), 303
+  if correct_answer?
+    redirect next_question_path, 303
   else
     halt 406
   end
 end
 
 helpers do
-  def question(key)
-    question = find_question(key)
+  def question
+    question = find_question(params[:key])
     question[:question] if question
   end
 
-  def answer(key)
-    question = find_question(key)
+  def answer
+    question = find_question(params[:key])
     question[:answer] if question
   end
 
@@ -47,16 +47,16 @@ helpers do
     "/#{questions.first[:key]}"
   end
 
-  def next_question_path(key)
-    if next_question(key)
-      "/#{next_question(key)[:key]}"
+  def next_question_path
+    if next_question
+      "/#{next_question[:key]}"
     else
       "/you-have-finished"
     end
   end
   
-  def next_question(key)
-    next_question = questions[index(key) + 1]
+  def next_question
+    next_question = questions[index(params[:key]) + 1]
   end
 
   def questions
@@ -68,8 +68,8 @@ helpers do
     data.to_json
   end
   
-  def correct_answer?(key)
-    answer(params[:key]) == user_answer
+  def correct_answer?
+    answer == user_answer
   end
 
   def user_answer
