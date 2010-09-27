@@ -102,7 +102,7 @@ Feature: a quiz
       """
     And the status should be 303
 
-  Scenario: finished
+  Scenario: requesting the ending with the correct key
     When I GET /finish/mission-complete with request headers:
       """
       Accept: application/json
@@ -116,3 +116,9 @@ Feature: a quiz
       """
     And the status should be 200
 
+  Scenario: requesting the ending with the incorrect key
+    When I GET /finish/i-have-finished with request headers:
+      """
+      Accept: application/json
+      """
+    Then the status should be 406

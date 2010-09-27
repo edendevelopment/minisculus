@@ -7,7 +7,11 @@ get '/start' do
 end
 
 get '/finish/:key' do
-  return_json ending_data if params[:key] == ending_key
+  if params[:key] == ending_key
+    return_json ending_data 
+  else
+    halt 406
+  end
 end
 
 get '/:key' do
