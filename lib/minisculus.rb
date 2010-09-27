@@ -2,8 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'json'
 
-set :environment, :test
-
 get '/start' do
   redirect first_question_path, 303
 end
