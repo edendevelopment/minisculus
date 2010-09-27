@@ -8,8 +8,8 @@ get '/start' do
   redirect first_question_path, 303
 end
 
-get '/you-have-finished' do
-  return_json :finished => true
+get '/finish/:key' do
+  return_json ending_data if params[:key] == ending_key
 end
 
 get '/:key' do
@@ -51,8 +51,16 @@ helpers do
     if next_question
       "/#{next_question[:key]}"
     else
-      "/you-have-finished"
+      "/finish/#{ending_key}"
     end
+  end
+
+  def ending_key
+    settings.ending[:key]
+  end
+
+  def ending_data
+    { :code => settings.ending[:code], :email => settings.ending[:email] }
   end
   
   def next_question

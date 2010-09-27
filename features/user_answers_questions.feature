@@ -1,6 +1,22 @@
 Feature: a quiz
 
-  @simple_questions
+  Background:
+    Given the quiz is configured with the questions:
+      """
+      [
+        {"key": "foo", "question": "1+1", "answer": "2"},
+        {"key": "bar", "question": "1x3", "answer": "3"}
+      ]
+      """
+    And the quiz has the ending:
+      """
+      {
+        "key": "mission-complete", 
+        "code": "ABC123", 
+        "email": "minisculus@edendevelopment.co.uk"
+      }
+      """
+
   Scenario: starting the quiz
     When I GET /start with request headers: 
       """ 
@@ -12,7 +28,6 @@ Feature: a quiz
       """
     And the status should be 303
 
-  @simple_questions
   Scenario: requesting a question 
     When I GET /foo with request headers:
       """
@@ -26,13 +41,10 @@ Feature: a quiz
       """
     And the status should be 200
 
-
-  @simple_questions
   Scenario: answering a question incorrectly
     Given I have the answer data
       """
       {
-        "github-repo": "http://github.com/example/project",
         "answer": "3"
       }
       """
@@ -43,12 +55,10 @@ Feature: a quiz
       """
     Then the status should be 406
 
-  @simple_questions
   Scenario: answering a question correctly
     Given I have the answer data
       """
       {
-        "github-repo": "http://github.com/example/project",
         "answer": "2"
       }
       """
@@ -62,7 +72,6 @@ Feature: a quiz
       """
     And the status should be 303
 
-  @simple_questions
   Scenario: requesting another question 
     When I GET /bar with request headers:
       """
@@ -76,12 +85,10 @@ Feature: a quiz
       """
     And the status should be 200
 
-  @simple_questions
   Scenario: answering the final question
     Given I have the answer data
       """
       {
-        "github-repo": "http://github.com/example/project",
         "answer": "3"
       }
       """
@@ -91,19 +98,20 @@ Feature: a quiz
       """
     Then the headers should contain:
       """
-      Location: /you-have-finished
+      Location: /finish/mission-complete
       """
     And the status should be 303
 
   Scenario: finished
-    When I GET /you-have-finished with request headers:
+    When I GET /finish/mission-complete with request headers:
       """
       Accept: application/json
       """
     Then the body should contain JSON:
       """
       {
-        "finished": true
+        "code": "ABC123",
+        "email": "minisculus@edendevelopment.co.uk"
       }
       """
     And the status should be 200

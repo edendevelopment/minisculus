@@ -1,10 +1,27 @@
-require 'crack'
+require 'json'
 
 def each_header(headers)
   headers.split("\n").each do |header|
     key, value = header.split(': ', 2)
     yield(key, value)
   end
+end
+
+Given /^the quiz is configured with the questions:$/ do |json_data|
+  set :questions, JSON.parse(json_data, :symbolize_names => true)
+end
+
+Given /^the quiz has the ending:$/ do |json_data|
+  set :ending, JSON.parse(json_data, :symbolize_names => true)
+end
+
+Given /^I have the answer data$/ do |data|
+  @answer_data = data
+end
+
+When /^I PUT (.+) with request headers:$/ do |path, headers|
+  each_header(headers) { |key, value| header(key, value) }
+  put path, @answer_data
 end
 
 When /^I GET (.+) with request headers:$/ do |path, headers|
@@ -22,15 +39,5 @@ end
 
 Then /^the body should contain JSON:$/ do |data|
   last_response.headers["Content-Type"].should == "application/json"
-  Crack::JSON.parse(last_response.body).should == Crack::JSON.parse(data)
+  JSON.parse(last_response.body).should == JSON.parse(data)
 end
-
-Given /^I have the answer data$/ do |data|
-  @answer_data = data
-end
-
-When /^I PUT (.+) with request headers:$/ do |path, headers|
-  each_header(headers) { |key, value| header(key, value) }
-  put path, @answer_data
-end
-
