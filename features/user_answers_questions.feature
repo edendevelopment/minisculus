@@ -38,7 +38,7 @@ Feature: a quiz
       """
       {
         "question": "1+1",
-        "reference-url": "/foo.html"
+        "reference-url": "http://example.org:80/foo.html"
       }
       """
     And the status should be 200
@@ -83,7 +83,7 @@ Feature: a quiz
       """
       {
         "question": "1x3",
-        "reference-url": "/bar.html"
+        "reference-url": "http://example.org:80/bar.html"
       }
       """
     And the status should be 200
@@ -115,7 +115,7 @@ Feature: a quiz
       {
         "code": "ABC123",
         "email": "minisculus@edendevelopment.co.uk",
-        "reference-url": "/finish/mission-complete.html"
+        "reference-url": "http://example.org:80/finish/mission-complete.html"
       }
       """
     And the status should be 200

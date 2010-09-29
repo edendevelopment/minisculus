@@ -2,6 +2,9 @@ require 'rubygems'
 require 'sinatra'
 require 'json'
 
+get '/' do
+  redirect '/index.html', 303
+end
 get '/start' do
   redirect first_question_path, 303
 end
@@ -35,7 +38,7 @@ helpers do
 
   def reference_url
     question = find_question(params[:key])
-    "/#{question[:'reference-url']}" if question
+    "http://#{request.host_with_port}/#{question[:'reference-url']}" if question
   end
 
   def answer
@@ -71,7 +74,7 @@ helpers do
     {
       :code => settings.ending[:code],
       :email => settings.ending[:email],
-      :'reference-url' => "/finish/#{settings.ending[:'reference-url']}"
+      :'reference-url' => "http://#{request.host_with_port}/finish/#{settings.ending[:'reference-url']}"
     }
   end
   
