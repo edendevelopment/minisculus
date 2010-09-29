@@ -15,7 +15,8 @@ get '/finish/:key' do
 end
 
 get '/:key' do
-  return_json :question => question
+  return_json :question => question,
+              :'reference-url' => reference_url
 end
 
 put '/:key' do
@@ -30,6 +31,11 @@ helpers do
   def question
     question = find_question(params[:key])
     question[:question] if question
+  end
+
+  def reference_url
+    question = find_question(params[:key])
+    "/#{question[:'reference-url']}" if question
   end
 
   def answer
@@ -62,7 +68,11 @@ helpers do
   end
 
   def ending_data
-    { :code => settings.ending[:code], :email => settings.ending[:email] }
+    {
+      :code => settings.ending[:code],
+      :email => settings.ending[:email],
+      :'reference-url' => "/finish/#{settings.ending[:'reference-url']}"
+    }
   end
   
   def next_question
