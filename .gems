@@ -1,5 +1,0 @@
-# default.gems generated gem export file. Note that any env variable settings will be missing. Append these after using a ';' field separator
-crack --version 0.1.8
-json --version 1.4.6
-json_pure --version 1.4.6
-sinatra --version 1.0
