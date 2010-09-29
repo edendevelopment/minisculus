@@ -5,11 +5,13 @@ require 'json'
 get '/' do
   redirect '/index.html', 303
 end
+
 get '/start' do
   redirect first_question_path, 303
 end
 
 get '/finish/:key' do
+  cache_long
   if params[:key] == ending_key
     return_json ending_data 
   else
@@ -18,6 +20,7 @@ get '/finish/:key' do
 end
 
 get '/:key' do
+  cache_long
   return_json :question => question,
               :'reference-url' => reference_url
 end
@@ -97,5 +100,9 @@ helpers do
 
   def user_answer
     JSON.parse(request.env["rack.input"].read, :symbolize_names => true)[:answer]
+  end
+
+  def cache_long
+    response['Cache-Control'] = "public, max-age=#{60 * 60}" unless development?
   end
 end
