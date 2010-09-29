@@ -38,7 +38,7 @@ helpers do
 
   def reference_url
     question = find_question(params[:key])
-    "http://#{request.host_with_port}/#{question[:'reference-url']}" if question
+    "/#{question[:'reference-url']}" if question
   end
 
   def answer
@@ -74,7 +74,7 @@ helpers do
     {
       :code => settings.ending[:code],
       :email => settings.ending[:email],
-      :'reference-url' => "http://#{request.host_with_port}/finish/#{settings.ending[:'reference-url']}"
+      :'reference-url' => "/finish/#{settings.ending[:'reference-url']}"
     }
   end
   
