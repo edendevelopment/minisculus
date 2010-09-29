@@ -4,14 +4,15 @@ Feature: a quiz
     Given the quiz is configured with the questions:
       """
       [
-        {"key": "foo", "question": "1+1", "answer": "2"},
-        {"key": "bar", "question": "1x3", "answer": "3"}
+        {"key": "foo", "question": "1+1", "answer": "2", "reference-url": "foo.html"},
+        {"key": "bar", "question": "1x3", "answer": "3", "reference-url": "bar.html"}
       ]
       """
     And the quiz has the ending:
       """
       {
         "key": "mission-complete", 
+        "reference-url": "mission-complete.html",
         "code": "ABC123", 
         "email": "minisculus@edendevelopment.co.uk"
       }
@@ -36,7 +37,8 @@ Feature: a quiz
     Then the body should contain JSON:
       """
       {
-        "question": "1+1"
+        "question": "1+1",
+        "reference-url": "/foo.html"
       }
       """
     And the status should be 200
@@ -80,7 +82,8 @@ Feature: a quiz
     Then the body should contain JSON:
       """
       {
-        "question": "1x3"
+        "question": "1x3",
+        "reference-url": "/bar.html"
       }
       """
     And the status should be 200
@@ -111,7 +114,8 @@ Feature: a quiz
       """
       {
         "code": "ABC123",
-        "email": "minisculus@edendevelopment.co.uk"
+        "email": "minisculus@edendevelopment.co.uk",
+        "reference-url": "/finish/mission-complete.html"
       }
       """
     And the status should be 200
