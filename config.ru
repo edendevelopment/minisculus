@@ -1,7 +1,9 @@
 # encoding: UTF-8
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
 require 'rubygems'
-require './lib/minisculus'
+require 'minisculus'
+
 require 'json'
 
 set :run, false
