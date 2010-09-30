@@ -7,16 +7,16 @@
 </head>
 <body>
 <div id="bodyContent">
-<h1>QUESTION 1:</h1>
-
-<h2>Background:</h2>
+<h1>YOUR FIRST CHALLENGE</h1>
 
 <p>Our crack team of undercover operatives, the Special Secret People of Awesomeness (SSPA), have intercepted plans for an enemy message encoding machine known as the MARK I.  The early prototype has been trial tested on the Western front to call in artillery strikes with great success, leading to many causalities on our side.  Your mission is to create a computerized version of the MARK I.</p>
 
 <p>The plans captured show the MARK I as being a very simple device.  The operator sets an encoder wheel to a value between 0 and 9 as pre-determined by standard operating protocols.  They then type on a keyboard and the resulting encoded character is sent to the field, which is then decoded and the commands are carried out.</p>
 
-<p>The keyboard has the following set of characters, which are used for both the input and output messages.</p><br/>
+<p>The keyboard has the following set of characters, which are used for both the input and output messages.</p>
+
 <pre>
+<code>
 [
 "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
@@ -25,6 +25,7 @@
 "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
 ".", ",", "?", "!", "'", "\"", " "
 ]
+<code>
 </pre>
 
 <p>The MARK I functions by shifting the input character by the number shown on the wheel.  Therefore, with a wheel setting of 5, an input character of 'a' will result in an encoded character of 'f', 'c' becomes 'h', and so forth.  If the new index falls off the end of the set of characters, then it simply loops back to the beginning (and vice versa).</p>
