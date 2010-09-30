@@ -11,8 +11,8 @@ get '/start' do
 end
 
 get '/finish/:key' do
-  cache_long
   if params[:key] == ending_key
+    cache_long
     return_json ending_data 
   else
     halt 406
