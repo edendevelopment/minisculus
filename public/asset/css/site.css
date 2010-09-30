@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+@font-face {
+	font-family: FortyTwoWebFont;
+	src: url('/asset/font/1942-webfont.ttf');
+}
+
+body {
+	background-image: url('/asset/image/header_background.png');
+	background-repeat: no-repeat;
+	background-color: black;
+	color: #84859f;
+	margin-bottom: 20px;
+} 
+
+h1, h2, h3 {
+	font-family: FortyTwoWebFont, Courier, monospace;
+	color: #4b4d68;
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: .75em;
+}
+h1 { font-size: 3.8em; }
+h2 { font-size: 2em; }
+
+p, a, a:hover, a:link, a:visited {
+	font-family: Courier, monospace;
+	color: #84859f;
+}
+
+#bodyContent {
+	position: absolute;
+	top: 245px;
+	left: 72px;
+	width: 534px;
+}
