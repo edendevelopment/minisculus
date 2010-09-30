@@ -8,14 +8,14 @@
 body {
 	background-image: url('/asset/image/header_background.png');
 	background-repeat: no-repeat;
-	background-color: black;
-	color: #84859f;
+	background-color: #1b1b27;
+	color: #ffffff;
 	margin-bottom: 20px;
 } 
 
 h1, h2, h3 {
 	font-family: FortyTwoWebFont, Courier, monospace;
-	color: #4b4d68;
+	color: #767791;
 	margin-top: 0;
 	margin-bottom: 0;
 	line-height: .75em;
@@ -25,7 +25,7 @@ h2 { font-size: 2em; }
 
 p, a, a:hover, a:link, a:visited {
 	font-family: Courier, monospace;
-	color: #84859f;
+	color: #ffffff;
 }
 
 #bodyContent {
