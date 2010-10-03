@@ -41,3 +41,7 @@ Then /^the body should contain JSON:$/ do |data|
   last_response.headers["Content-Type"].should == "application/json"
   JSON.parse(last_response.body).should == JSON.parse(data)
 end
+
+Then /^the body should contain:$/ do |text|
+  last_response.body.should be_include(text)
+end

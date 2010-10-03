@@ -26,10 +26,14 @@ get '/:key' do
 end
 
 put '/:key' do
-  if correct_answer?
-    redirect next_question_path, 303
-  else
-    halt 406
+  begin
+    if correct_answer?
+      redirect next_question_path, 303
+    else
+      halt 406
+    end
+  rescue JSON::ParserError => exception
+    halt 406, "Unable to parse JSON.\n#{exception.message}"
   end
 end
 

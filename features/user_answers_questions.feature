@@ -57,6 +57,24 @@ Feature: a quiz
       """
     Then the status should be 406
 
+  Scenario: answering a question with malformed JSON
+    Given I have the answer data
+      """
+      {
+        answer: "3"
+      }
+      """
+    When I PUT /foo with request headers:
+      """
+      Accept: application/json
+      Content-type: application/json
+      """
+    Then the status should be 406
+    And the body should contain:
+      """
+      Unable to parse JSON.
+      """
+
   Scenario: answering a question correctly
     Given I have the answer data
       """
