@@ -10,7 +10,6 @@ body {
 	background-repeat: no-repeat;
 	background-color: #1b1b27;
 	color: #ffffff;
-	margin-bottom: 20px;
 } 
 
 h1, h2, h3 {
@@ -33,4 +32,14 @@ p, a, a:hover, a:link, a:visited {
 	top: 245px;
 	left: 72px;
 	width: 534px;
+}
+
+.footer {
+	margin-top: 3em;
+	margin-bottom: 2em;
+}
+
+.footer p, .footer a, .footer a:hover, .footer a:link, .footer a:visited {
+	font-size: .8em;
+	color: #AAAAAA;
 }
