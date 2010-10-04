@@ -35,11 +35,11 @@ p, a, a:hover, a:link, a:visited {
 }
 
 .footer {
+	font-size: .8em;
 	margin-top: 3em;
 	margin-bottom: 2em;
 }
 
 .footer p, .footer a, .footer a:hover, .footer a:link, .footer a:visited {
-	font-size: .8em;
 	color: #AAAAAA;
 }
