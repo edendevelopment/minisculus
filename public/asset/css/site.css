@@ -22,7 +22,7 @@ h1, h2, h3 {
 h1 { font-size: 3.8em; }
 h2 { font-size: 2em; }
 
-p, a, a:hover, a:link, a:visited {
+p, li, span, a, a:hover, a:link, a:visited {
 	font-family: Courier, monospace;
 	color: #ffffff;
 }
@@ -32,6 +32,15 @@ p, a, a:hover, a:link, a:visited {
 	top: 245px;
 	left: 72px;
 	width: 534px;
+}
+
+.solutionWinner {
+	font-size: .8em;
+}
+
+.solutionCode {
+	margin-left: 2em;
+	font-size: .8em;
 }
 
 .footer {
