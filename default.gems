@@ -1,0 +1,20 @@
+# default.gems generated gem export file. Note that any env variable settings will be missing. Append these after using a ';' field separator
+builder -v2.1.2
+configuration -v1.1.0
+cucumber -v0.9.2
+diff-lcs -v1.1.2
+gherkin -v2.2.9
+heroku -v1.10.13
+json -v1.4.6
+json_pure -v1.4.6
+launchy -v0.3.7
+mime-types -v1.16
+rack -v1.2.1
+rack-test -v0.5.6
+rest-client -v1.6.1
+rspec -v2.0.1
+rspec-core -v2.0.1
+rspec-expectations -v2.0.1
+rspec-mocks -v2.0.1
+sinatra -v1.0
+term-ansicolor -v1.0.5
